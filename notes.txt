@@ -1,0 +1,2 @@
+Notes :
+	Creer une base de donnees prénommé fil_rouge avant de lancer le projet
