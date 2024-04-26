@@ -1,13 +1,16 @@
 <?php
 // Informations de connexion à la base de données
-$servername = "127.0.0.1";
-$username = "nazim";
+$servername = "db";
+$username = "root";
 $password = "passer";
 $base = "fil_rouge";
 
+
+
 // Création de la connexion
 $conn = new mysqli($servername, $username, $password);
-
+//creation de la base
+$creation_base="CREATE DATABASE $base";
 // Vérification de la connexion
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

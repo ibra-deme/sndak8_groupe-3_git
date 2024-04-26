@@ -1,0 +1,27 @@
+version: "2.26"
+
+services:
+  web: # le nom conteneur
+    build: # On niveau du lancement on cree notre image
+      context: . # Assurez-vous que ce répertoire contient le Dockerfile pour le service web
+      dockerfile: Web.Dockerfile
+    ports:
+      - "3000:80" #Mappage de port
+    depends_on: #Signifie que le conteneur db va etre cree en premier
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: root
+      DATABASE_PASSWORD: passer
+      DATABASE_NAME: fil_rouge
+
+  db:
+    build:
+      context: . # Assurez-vous que ce répertoire contient le Dockerfile pour le service db
+      dockerfile: Db.Dockerfile
+    volumes:
+      - mysql_data:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
+    environment:
+      - MYSQL_ROOT_PASSWORD=passer
+volumes:
+  mysql_data:
