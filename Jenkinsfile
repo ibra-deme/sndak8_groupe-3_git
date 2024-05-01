@@ -12,12 +12,5 @@ pipeline {
       }
     }
   }
-  post{
-    sucess{
-        echo 'Votre build a reussi'
-    }
-    failure{
-        echo'Erreur de build'
-    }
-  }
+  
 }
