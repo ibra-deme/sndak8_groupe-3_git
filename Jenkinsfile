@@ -14,10 +14,10 @@ pipeline {
   }
   post {
     success {
-      slackSend channel: '@Odc Aws Groupe3', message: 'Code execute'
+      slackSend channel: '#projet-aws', message: 'Code execute'
     }
     failure {
-      slackSend channel: '@Odc Aws Groupe3', message: 'Code execute error'
+      slackSend channel: '#projet-aws', message: 'Code execute with error'
     }
   }
 }
