@@ -2,25 +2,22 @@ pipeline {
   agent any
   stages {
     stage ('test') {
-      steps{
+      steps {
         bat 'docker ps -a'
       }
     }
     stage ('Run Docker Compose') {
-      steps{
+      steps {
         bat 'docker-compose up  -d'
       }
     }
-
   }
-  post{
-    sucess{
+  post {
+    success {
       slackSend channel: '@Odc Aws Groupe3', message: 'Code execute'
     }
-    failure{
+    failure {
       slackSend channel: '@Odc Aws Groupe3', message: 'Code execute error'
     }
   }
-  
-  
 }
