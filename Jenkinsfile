@@ -11,6 +11,16 @@ pipeline {
         bat 'docker-compose up  -d'
       }
     }
+
   }
+  post{
+    sucess{
+      slackSend channel: '@Odc Aws Groupe3', message: 'Code execute'
+    }
+    failure{
+      slackSend channel: '@Odc Aws Groupe3', message: 'Code execute error'
+    }
+  }
+  
   
 }
