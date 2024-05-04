@@ -1,7 +1,12 @@
 pipeline {
   agent any
   stages {
-   
+
+    stage('essaie') {
+      steps {
+        echo 'hello world'
+      }
+    }
     stage ('test') {
       steps {
         bat 'docker ps -a'
