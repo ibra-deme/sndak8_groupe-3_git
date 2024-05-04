@@ -3,6 +3,11 @@ pipeline {
   stages {
     stage ('test') {
       steps {
+        echo 'docker ps -a'
+      }
+    }
+    stage ('test') {
+      steps {
         bat 'docker ps -a'
       }
     }
