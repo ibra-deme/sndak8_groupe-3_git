@@ -14,7 +14,13 @@ pipeline {
     }
     stage ('Run Docker Compose') {
       steps {
-        bat 'docker-compose up  -d'
+         script {
+                    if (isUnix()) {
+                        sh 'docker-compose up -d --build'
+                    } else {
+                        bat 'docker-compose up -d --build'
+                    }
+                }
       }
     }
   }
