@@ -22,6 +22,6 @@ services:
     volumes:
       - mysql_data_first:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD:root
 volumes:
   mysql_data_first:
