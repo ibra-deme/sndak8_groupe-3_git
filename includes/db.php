@@ -1,23 +1,30 @@
 <?php
 // Informations de connexion à la base de données
-$servername = "db";
+$servername = "db";//127.0.0.1
+// $username = "nazim";
+// $password = "passer";
 $username = "root";
-$password = "passer";
+$password = "root";
 $base = "fil_rouge";
-
-
 
 // Création de la connexion
 $conn = new mysqli($servername, $username, $password);
-//creation de la base
-$creation_base="CREATE DATABASE $base";
+
 // Vérification de la connexion
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//création de la base
+$sql_creation_base =" CREATE DATABASE IF NOT EXISTS fil_rouge; ";
+if ($conn->query($sql_creation_base) === TRUE) {
+    echo "Table créée avec succès";
+}
+
+
 // Sélection de la base de données
 $conn->select_db($base);
+
 
 // Création de la table users si elle n'existe pas
 $sql = "CREATE TABLE IF NOT EXISTS users (
