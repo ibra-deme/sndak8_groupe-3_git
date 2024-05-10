@@ -12,7 +12,7 @@ services:
     environment:
       DATABASE_HOST: db
       DATABASE_USER: root
-      DATABASE_PASSWORD: passer
+      DATABASE_PASSWORD: root
       DATABASE_NAME: fil_rouge
 
   db:
@@ -22,6 +22,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
     environment:
-      - MYSQL_ROOT_PASSWORD=passer
+      - MYSQL_ROOT_PASSWORD=root
 volumes:
   mysql_data:
