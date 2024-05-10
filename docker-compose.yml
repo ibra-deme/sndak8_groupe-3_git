@@ -9,18 +9,18 @@ services:
       - "3000:80" #Mappage de port
     depends_on: #Signifie que le conteneur db va etre cree en premier
       - db
-    environment:
-      DATABASE_HOST: db
-      DATABASE_USER: root
-      DATABASE_PASSWORD: root
-      DATABASE_NAME: fil_rouge
+    # environment:
+    #   DATABASE_HOST: db
+    #   DATABASE_USER: root
+    #   DATABASE_PASSWORD: root
+    #   DATABASE_NAME: fil_rouge
 
   db:
     build:
       context: . # Assurez-vous que ce répertoire contient le Dockerfile pour le service db
       dockerfile: Db.Dockerfile
     volumes:
-      - mysql_data:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
+      - mysql_data_1:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
     environment:
       - MYSQL_ROOT_PASSWORD=root
 volumes:
