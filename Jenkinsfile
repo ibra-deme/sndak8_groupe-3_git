@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+
+    stage('essaie') {
+      steps {
+        echo 'hello best world'
+      }
+    }
     stage ('test') {
       steps {
         bat 'docker ps -a'
@@ -8,7 +14,13 @@ pipeline {
     }
     stage ('Run Docker Compose') {
       steps {
-        bat 'docker-compose up  -d'
+         script {
+                    if (isUnix()) {
+                        sh 'docker-compose up -d --build'
+                    } else {
+                        bat 'docker-compose up -d --build'
+                    }
+                }
       }
     }
   }
