@@ -20,7 +20,7 @@ services:
       context: . # Assurez-vous que ce répertoire contient le Dockerfile pour le service db
       dockerfile: Db.Dockerfile
     volumes:
-      - mysql_data_1:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
+      - mysql_data1:/var/lib/mysql #Mappage de volume pour rendre les donnees permanent meme apres la suppression du conteneur
     environment:
       - MYSQL_ROOT_PASSWORD=root
 volumes:
