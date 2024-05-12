@@ -17,28 +17,18 @@ pipeline {
                 echo 'docker ps -a'
             }
         }
-        stage('Docker build') {
+        stage('Docker compose build') {
             steps {
                 script {
                     if (isUnix()) {
-                        sh "docker build -t $web_image -f Web.Dockerfile ."
+                        sh "docker-compose up -d --build"
                     } else {
-                        bat "docker build -t $web_image -f Web.Dockerfile ."
+                        bat "docker-compose up -d --build"
                     }
                 }
             }
         }
-        stage('Docker build DB') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        sh "docker build -t $db_image -f Db.Dockerfile ."
-                    } else {
-                        bat "docker build -t $db_image -f Db.Dockerfile ."
-                    }
-                }
-            }
-        }
+      
         stage('Docker push') {
             steps {
                 script {
