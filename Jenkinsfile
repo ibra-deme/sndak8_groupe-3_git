@@ -50,7 +50,7 @@ pipeline {
                     } else {
                         bat 'kubectl apply -f web-deployment.yaml'
 
-                    }
+ }
                 }
             }
         }
