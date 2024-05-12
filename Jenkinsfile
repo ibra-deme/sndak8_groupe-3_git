@@ -17,17 +17,17 @@ pipeline {
                 echo 'docker ps -a'
             }
         }
-        // stage('Docker compose build') {
-        //     steps {
-        //         script {
-        //             if (isUnix()) {
-        //                 sh "docker-compose up -d --build"
-        //             } else {
-        //                 bat "docker-compose up -d --build"
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Docker compose build') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh "docker-compose up -d --build"
+                    } else {
+                        bat "docker-compose up -d --build"
+                    }
+                }
+            }
+        }
       
         // stage('Docker push') {
         //     steps {
