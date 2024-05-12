@@ -12,38 +12,34 @@ pipeline {
                 git 'https://github.com/ibra-deme/sndak8_groupe-3_git.git'
             }
         }
-        stage ('Test') {
+        stage('Test') {
             steps {
                 echo 'docker ps -a'
             }
         }
-        stage ('Docker build') {
+        stage('Docker build') {
             steps {
                 script {
                     if (isUnix()) {
                         sh "docker build -t $web_image -f Web.Dockerfile ."
-                      
                     } else {
                         bat "docker build -t $web_image -f Web.Dockerfile ."
-                      
                     }
                 }
             }
         }
-        stage ('Docker build') {
+        stage('Docker build DB') {
             steps {
                 script {
                     if (isUnix()) {
-                  
                         sh "docker build -t $db_image -f Db.Dockerfile ."
                     } else {
-                       
                         bat "docker build -t $db_image -f Db.Dockerfile ."
                     }
                 }
             }
         }
-        stage ('Docker push') {
+        stage('Docker push') {
             steps {
                 script {
                     if (isUnix()) {
@@ -56,7 +52,7 @@ pipeline {
                 }
             }
         }
-        stage ('Kubernetes apply') {
+        stage('Kubernetes apply') {
             steps {
                 script {
                     if (isUnix()) {
