@@ -29,19 +29,19 @@ pipeline {
         //     }
         // }
       
-        stage('Docker push') {
-            steps {
-                script {
-                    if (isUnix()) {
-                        sh "docker push ibrademe/$web_image"
-                        sh "docker push ibrademe/$db_image"
-                    } else {
-                        bat "docker push ibrademe/$web_image"
-                        bat "docker push ibrademe/$db_image"
-                    }
-                }
-            }
-        }
+        // stage('Docker push') {
+        //     steps {
+        //         script {
+        //             if (isUnix()) {
+        //                 sh "docker push ibrademe/$web_image"
+        //                 sh "docker push ibrademe/$db_image"
+        //             } else {
+        //                 bat "docker push ibrademe/$web_image"
+        //                 bat "docker push ibrademe/$db_image"
+        //             }
+        //         }
+        //     }
+        // }
         stage('Kubernetes apply') {
             steps {
                 script {
