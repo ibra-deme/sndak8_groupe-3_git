@@ -22,9 +22,22 @@ pipeline {
                 script {
                     if (isUnix()) {
                         sh "docker build -t $web_image -f Web.Dockerfile ."
-                        sh "docker build -t $db_image -f Db.Dockerfile ."
+                      
                     } else {
                         bat "docker build -t $web_image -f Web.Dockerfile ."
+                      
+                    }
+                }
+            }
+        }
+        stage ('Docker build') {
+            steps {
+                script {
+                    if (isUnix()) {
+                  
+                        sh "docker build -t $db_image -f Db.Dockerfile ."
+                    } else {
+                       
                         bat "docker build -t $db_image -f Db.Dockerfile ."
                     }
                 }
