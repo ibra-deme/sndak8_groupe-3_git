@@ -48,7 +48,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'kubectl apply -f kuber_aws/'
                     } else {
-                        bat 'kubectl apply -f kuber_aws/'
+                        bat 'kubectl get po'
                     }
                 }
             }
