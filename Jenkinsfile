@@ -3,8 +3,8 @@ pipeline {
   environment {
         // Définir les variables d'environnement nécessaires, par exemple les informations d'authentification Kubernetes
         KUBECONFIG = credentials('kubernetes_token') // ID des credentials de Kubernetes
-        web-image = "my_php_image"
-        db-image = "my_mysql_image"
+        web_image = "my_php_image"
+        db_image = "my_mysql_image"
         registrycredential="docker-credential"
     }
   stages {
@@ -24,11 +24,11 @@ pipeline {
       steps {
          script {
                     if (isUnix()) {
-                        sh 'docker build -t $(web-image) -f Web.Dockerfile .'
-                        sh 'docker build -t $(db-image) -f Db.Dockerfile .'
+                        sh 'docker build -t $(web_image) -f Web.Dockerfile .'
+                        sh 'docker build -t $(db_image) -f Db.Dockerfile .'
                     } else {
-                        bat 'docker build -t $(web-image) -f Web.Dockerfile .'
-                        bat 'docker build -t $(db-image) -f Db.Dockerfile .'
+                        bat 'docker build -t $(web_image) -f Web.Dockerfile .'
+                        bat 'docker build -t $(db_image) -f Db.Dockerfile .'
                     }
                 }
       }
@@ -37,11 +37,11 @@ pipeline {
       steps {
          script {
                     if (isUnix()) {
-                        sh 'docker push ibrademe/$(web-image)'
-                        sh 'docker push ibrademe/$(db-image)'
+                        sh 'docker push ibrademe/$(web_image)'
+                        sh 'docker push ibrademe/$(db_image)'
                     } else {
-                        bat 'docker push ibrademe/$(web-image)'
-                        bat 'docker push ibrademe/$(db-image)'
+                        bat 'docker push ibrademe/$(web_image)'
+                        bat 'docker push ibrademe/$(db_image)'
                     }
                 }
       }
