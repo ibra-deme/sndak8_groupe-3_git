@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Test') {
             steps {
-                bat 'docker ps -a'
+                echo 'docker ps -a'
             }
         }
         stage ('Docker build') {
