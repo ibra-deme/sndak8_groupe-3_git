@@ -48,7 +48,7 @@ pipeline {
                     if (isUnix()) {
                         sh 'kubectl apply -f kuber_aws/'
                     } else {
-                        bat 'kubectl get po'
+                        bat 'kubectl apply -f kuber_aws/web-deployment.yaml'
                     }
                 }
             }
