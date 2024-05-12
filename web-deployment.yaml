@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-base
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: php-apache
+          image: ibrademe/my_php_image
+          ports:
+            - containerPort: 80
+          env:
+            - name: DATABASE_HOST
+              value: db
+            - name: DATABASE_USER
+              value: root
+            - name: DATABASE_PASSWORD
+              value: root
+            - name: DATABASE_NAME
+              value: fil_rouge
+      volumes:
+        - name: app-volume
+          emptyDir: {}

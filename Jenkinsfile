@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        KUBECONFIG = credentials('kubernetes_token')
+        KUBECONFIG = credentials('kuber_token')
         web_image = "my_php_image"
         db_image = "my_mysql_image"
         registry_credential = "docker-credential"
@@ -46,9 +46,10 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'kubectl apply -f kuber_aws/'
+                        sh 'kubectl apply -f '
                     } else {
-                        bat 'kubectl apply -f kuber_aws/web-deployment.yaml'
+                        bat 'kubectl apply -f web-deployment.yaml'
+
                     }
                 }
             }
