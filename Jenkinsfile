@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        KUBECONFIG = credentials('kuber_token')
+        KUBECONFIG = credentials('kube_token')
         web_image = "my_php_image"
         db_image = "my_mysql_image"
         registry_credential = "docker-credential"
